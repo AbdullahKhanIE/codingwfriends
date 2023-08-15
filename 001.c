@@ -1,9 +1,8 @@
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 #define N 100
 
 void makelow(char str1[]);
+int strln(char str[]);
 void strcom(char str1[], char str[]);
 void maxchar(char str[], int len, char maxalpha[]);
 
@@ -12,13 +11,12 @@ int main()
     char str1[N], str2[N], maxalpha[26];
     fgets(str1, N, stdin);
     fgets(str2, N, stdin);
-    str1[strlen(str1) - 1] = '\0';
-    str2[strlen(str2) - 1] = '\0';
+    str1[strln(str1) - 1] = '\0';
+    str2[strln(str2) - 1] = '\0';
     makelow(str1);
     makelow(str2);
     strcom(str1, str2);
-    maxchar(str1, strlen(str1), maxalpha);
-
+    maxchar(str1, strln(str1), maxalpha);
     return 0;
 }
 
@@ -33,12 +31,21 @@ void makelow(char str1[])
         }
     }
 }
+int strln(char str[])
+{
+    int len=0;
+    for (int i = 0; str[i]!='\0'; i++)
+    {
+        len++;
+    }
+    return len;
+}
 
 void strcom(char str1[], char str2[])
 {
     int i, j, count = 0;
-    int len1 = strlen(str1);
-    int len2 = strlen(str2);
+    int len1 = strln(str1);
+    int len2 = strln(str2);
     if (len1 < len2)
     {
         return;
