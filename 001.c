@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define N 100
 
-void makelow(char str1[]);
+void makecap(char str1[]);
 int strln(char str[]);
 void strcom(char str1[], char str[]);
 void maxchar(char str[], int len, char maxalpha[]);
@@ -13,15 +13,15 @@ int main()
     fgets(str2, N, stdin);
     str1[strln(str1) - 1] = '\0';
     str2[strln(str2) - 1] = '\0';
-    makelow(str1);
-    makelow(str2);
+    makecap(str1);
+    makecap(str2);
     strcom(str1, str2);
     maxchar(str1, strln(str1), maxalpha);
     return 0;
 }
 
 
-void makelow(char str1[])
+void makecap(char str1[])
 {
     for (int i = 0; str1[i] != '\0'; i++)
     {
